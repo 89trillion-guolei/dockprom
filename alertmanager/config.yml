@@ -1,11 +1,14 @@
+templates:
+  - './alert.tmpl'
 route:
-    receiver: 'slack'
+  receiver: 'wechat'
 
 receivers:
-    - name: 'slack'
-      slack_configs:
-          - send_resolved: true
-            text: "{{ .CommonAnnotations.description }}"
-            username: 'Prometheus'
-            channel: '#<channel-name>'
-            api_url: 'https://hooks.slack.com/services/<webhook-id>'
+  - name: 'wechat'
+    wechat_configs:
+      - send_resolved: true
+        api_secret: ${API_SECRET}
+        api_url: ${API_URL}
+        corp_id: ${CORP_ID}
+        to_user: '@all'
+        agent_id: ${AGENT_ID}
