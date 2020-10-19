@@ -42,7 +42,7 @@ groups:
 - name: containers
   rules:
   - alert: tata_down
-    expr: absent(container_memory_usage_bytes{name="tata_tata_1"})
+    expr: absent(container_memory_usage_bytes{name="tata"})
     for: 30s
     labels:
       severity: critical
@@ -51,7 +51,7 @@ groups:
       description: "tata container is down for more than 30 seconds."
 
   - alert: tata_high_cpu
-    expr: sum(rate(container_cpu_usage_seconds_total{name="tata_tata_1"}[1m])) / count(node_cpu_seconds_total{mode="system"}) * 100 > 10
+    expr: sum(rate(container_cpu_usage_seconds_total{name="tata"}[1m])) / count(node_cpu_seconds_total{mode="system"}) * 100 > 10
     for: 30s
     labels:
       severity: warning
@@ -60,7 +60,7 @@ groups:
       description: "tata CPU usage is {{ humanize $value}}%."
 
   - alert: tata_high_memory
-    expr: sum(container_memory_usage_bytes{name="tata_*"}) > 1200000000
+    expr: sum(container_memory_usage_bytes{name="tata"}) > 1200000000
     for: 30s
     labels:
       severity: warning
