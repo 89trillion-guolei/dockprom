@@ -4,8 +4,6 @@
 {{- if eq $index 0 -}}
 告警类型: {{ $alert.Labels.alertname }}
 告警级别: {{ $alert.Labels.severity }}
-告警环境:
-
 =====================
 {{- end }}
 ===告警详情===
@@ -25,7 +23,6 @@
 {{- if eq $index 0 -}}
 告警类型: {{ $alert.Labels.alertname }}
 告警级别: {{ $alert.Labels.severity }}
-告警环境:
 =====================
 {{- end }}
 ===告警详情===
