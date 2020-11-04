@@ -42,13 +42,13 @@ groups:
       description: "tata container is down for more than 30 seconds."
 
   - alert: tata_ai_down
-      expr: absent(container_memory_usage_bytes{name="tata_ai"})
-      for: 30s
-      labels:
-        severity: critical
-      annotations:
-        summary: "tata ai container down"
-        description: "tata ai container is down for more than 30 seconds."
+    expr: absent(container_memory_usage_bytes{name="tata_ai"})
+    for: 30s
+    labels:
+      severity: critical
+    annotations:
+      summary: "tata ai container down"
+      description: "tata ai container is down for more than 30 seconds."
 
   - alert: tata_high_cpu
     expr: sum(rate(container_cpu_usage_seconds_total{name="tata"}[1m])) / count(node_cpu_seconds_total{mode="system"}) * 100 > 10
